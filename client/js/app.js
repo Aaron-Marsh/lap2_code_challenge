@@ -21,28 +21,36 @@ function submitPost(e){
         .then(r => r.json())
         .then(data =>{
             data.title = postData.title;
-            data.pseudoName = postData.pseudonym;
+            data.pseudonym = postData.pseudonym;
             data.body = postData.body;
-
+            const id = data.id;
             console.log(data)
-            // goToPost()
+            goToPost(id)
         })
         .catch(console.warn)
 };
 
+function goToPost(id){
+    fetch(`http://localhost:3000/posts/${id}`)
+    .then(r => r.json())
+    .then(data =>{
+    //    let url = `http://localhost:3000/posts/${id}`
+        let doc = document.implementation.createHTMLDocument();
+
+        let p = doc.createElement("p");
+  p.textContent = "This is a new paragraph.";
+
+  try {
+    doc.body.appendChild(p);
+  } catch(e) {
+    console.log(e);
+  }
+  
 
 
-
-    
-// getAllPosts('http://localhost:3000/posts', options);
-
-
-
-// function getAllPosts(){
-//     fetch('http://localhost:3000/posts')
-//         .then(r => r.json())
-//         .then(r.send)
-//         .catch(console.warn)
-// }
-
-
+  
+       
+        window.open(`http://localhost:5500/${doc}`);
+    })
+    .catch(console.warn)
+}
