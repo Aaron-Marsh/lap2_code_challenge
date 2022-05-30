@@ -4,7 +4,7 @@ class Post {
     constructor(data){
         this.id = data.id
         this.title = data.title
-        this.pseudonym = data.pseudonym
+        this.psuedoName = data.pseudonym
         this.body = data.body
     }
 
@@ -36,7 +36,7 @@ class Post {
     static create(title, pseudoname, body){
         return new Promise (async (resolve, reject) => {
             try {
-                let postData = await db.query(`INSERT INTO posts (title, pseudoname, body) VALUES ($1, $2, $3) RETURNING *;`, [ title, pseudoname, body ]);
+                let postData = await db.query(`INSERT INTO posts (title, psuedoName, body) VALUES ($1, $2, $3) RETURNING *;`, [ title, pseudoname, body ]);
                 let newPost = new Post(postData.rows[0]);
                 resolve (newPost);
             } catch (err) {
