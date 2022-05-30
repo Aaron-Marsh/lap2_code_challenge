@@ -32,6 +32,18 @@ class Post {
             }
         });
     }
+
+    static create(title, pseudoname, body){
+        return new Promise (async (resolve, reject) => {
+            try {
+                let postData = await db.query(`INSERT INTO posts (title, pseudoname, body) VALUES ($1, $2, $3) RETURNING *;`, [ title, pseudoname, body ]);
+                let newPost = new Post(postData.rows[0]);
+                resolve (newPost);
+            } catch (err) {
+                reject('Error creating post');
+            }
+        });
+    }
     
 }
 
