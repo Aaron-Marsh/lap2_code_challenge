@@ -6,8 +6,8 @@ function submitPost(e){
 
     const postData = {
         title: e.target.title.value,
-        pseudonym: 'person',
-        body: 'test body'
+        pseudonym: e.target.pseudonym.value,
+        body: e.target.body.value
     }
     console.log(e.target.title.value);
     
@@ -22,7 +22,7 @@ function submitPost(e){
         .then(data =>{
             data.title = postData.title;
             data.pseudoName = postData.pseudonym;
-            data.body = postData.pseudonym;
+            data.body = postData.body;
 
             console.log(data)
             // goToPost()
