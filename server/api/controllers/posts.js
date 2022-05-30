@@ -12,4 +12,13 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.post('/', async (req, res) => {
+    try {
+        const post = await Post.create(req.body)
+        res.json(post)
+    } catch(err) {
+        res.status(404).json({err})
+    }
+})
+
 module.exports = router;
