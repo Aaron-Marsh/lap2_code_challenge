@@ -6,6 +6,8 @@ function submitPost(e){
 
     const postData = {
         title: e.target.title.value,
+        pseudonym: 'person',
+        body: 'test body'
     }
     console.log(e.target.title.value);
     
@@ -18,7 +20,11 @@ function submitPost(e){
     fetch('http://localhost:3000/posts', options)
         .then(r => r.json())
         .then(data =>{
-            data = postData
+            data.title = postData.title;
+            data.pseudoName = postData.pseudonym;
+            data.body = postData.pseudonym;
+
+            console.log(data)
             // goToPost()
         })
         .catch(console.warn)
