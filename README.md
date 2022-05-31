@@ -11,7 +11,8 @@ This is inspired by [Telegraph](https://telegra.ph/)
 
 
 ### Usage
-- `open` index.html or run the live server from VSCode
+- Run the live server from VSCode
+- Go to the  url http://localhost:5500/client/
 
 
 ## Wins and Challenges
