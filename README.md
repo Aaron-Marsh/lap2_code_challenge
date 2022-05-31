@@ -9,10 +9,9 @@ This is inspired by [Telegraph](https://telegra.ph/)
 - `cd` into server folder
 - `docker compose up` to start the server on port 3000
 
+
 ### Usage
 - `open` index.html or run the live server from VSCode
-
-## Bugs
 
 
 ## Wins and Challenges
@@ -25,7 +24,7 @@ This is inspired by [Telegraph](https://telegra.ph/)
 
 ## Contributors
 
-Group challenge done by: 
+Challenge done by: 
 
 
 - <a href="https://github.com/Aaron-Marsh">Aaron Marsh</a>
