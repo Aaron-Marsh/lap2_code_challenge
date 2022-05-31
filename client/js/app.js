@@ -24,7 +24,7 @@ function submitPost(e){
             data.pseudonym = postData.pseudonym;
             data.body = postData.body;
             const id = data.id;
-            console.log(data)
+            // console.log(data)
             goToPost(id)
         })
         .catch(console.warn)
@@ -34,23 +34,15 @@ function goToPost(id){
     fetch(`http://localhost:3000/posts/${id}`)
     .then(r => r.json())
     .then(data =>{
-    //    let url = `http://localhost:3000/posts/${id}`
-        let doc = document.implementation.createHTMLDocument();
+        //    let url = `http://localhost:3000/posts/${id}`
+        let doc = window.location.href
+        newURL = doc + id
+        console.log(newURL)
+        //in this new url we hide the buttons and display the writing 
+        window.open(newURL);
+        console.log(data)
+        form.style.display = "none"
 
-        let p = doc.createElement("p");
-  p.textContent = "This is a new paragraph.";
-
-  try {
-    doc.body.appendChild(p);
-  } catch(e) {
-    console.log(e);
-  }
-  
-
-
-  
-       
-        window.open(`http://localhost:5500/${doc}`);
     })
     .catch(console.warn)
 }
