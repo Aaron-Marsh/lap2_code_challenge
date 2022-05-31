@@ -22,6 +22,9 @@ This is inspired by [Telegraph](https://telegra.ph/)
 ### Challenges
 - Creating new pages for each post
 
+## Future feature
+- store date in database to track when posts are made
+
 ## Contributors
 
 Challenge done by: 
