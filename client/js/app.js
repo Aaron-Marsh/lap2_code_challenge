@@ -5,6 +5,7 @@ const div = document.getElementById('div')
 function submitPost(e){
     e.preventDefault();
 
+    if (e.target.title.value && e.target.pseudonym.value && e.target.body.value){
     const postData = {
         title: e.target.title.value,
         pseudonym: e.target.pseudonym.value,
@@ -25,27 +26,15 @@ function submitPost(e){
             data.pseudonym = postData.pseudonym;
             data.body = postData.body;
             const id = data.id;
-            // console.log(data)
             goToPost(id)
         })
         .catch(console.warn)
+    } else {
+        alert('Fill all fields')
+    }
 };
 
 function goToPost(id){
-    // fetch(`http://localhost:3000/posts/${id}`)
-    // .then(r => r.json())
-    // .then(data =>{
-    //     //    let url = `http://localhost:3000/posts/${id}`
-    //     let doc = window.location.href
-    //     newURL = doc + id
-    //     console.log(newURL)
-    //     //in this new url we hide the buttons and display the writing 
-    //     window.open(newURL);
-    //     console.log(data)
-    //     form.style.display = "none"
-
-    // })
-    // .catch(console.warn)
     let url = window.location.href
     let newUrl = url + `?${id}`
     window.open(newUrl, "_self");
@@ -64,15 +53,18 @@ fetch(`http://localhost:3000/posts/${id}`)
 .then(data =>{
 
     let paragraph1 = document.createElement('p')
-    paragraph1.textContent = data.pseudonym;
+    paragraph1.textContent = data.title;
+    paragraph1.className = "post_title";
     div.appendChild(paragraph1);
 
     let paragraph2 = document.createElement('p')
-    paragraph2.textContent = data.title;
+    paragraph2.textContent = data.pseudonym;
+    paragraph2.className = "post_pseudonym";
     div.appendChild(paragraph2);
 
     let paragraph3 = document.createElement('p')
     paragraph3.textContent = data.body;
+    paragraph3.className = "post_body";
     div.appendChild(paragraph3);
 
 })
